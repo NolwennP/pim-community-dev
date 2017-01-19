@@ -52,4 +52,18 @@ class FamilyController
 
         return new JsonResponse($familyStandard);
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function listAction(Request $request)
+    {
+        $families = $this->repository->findAll();
+
+        $familiesStandard = $this->normalizer->normalize($families, 'external_api');
+
+        return new JsonResponse($familiesStandard);
+    }
 }

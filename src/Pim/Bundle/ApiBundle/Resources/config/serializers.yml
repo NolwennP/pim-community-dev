@@ -1,0 +1,8 @@
+parameters:
+    pim_api.normalizer.internal_api.collection.class: Pim\Component\Api\Normalizer\SimpleCollectionNormalizer
+
+services:
+    pim_api.normalizer.internal_api.collection:
+        class: '%pim_api.normalizer.internal_api.collection.class%'
+        tags:
+            - { name: pim_serializer.normalizer, priority: 90 }
