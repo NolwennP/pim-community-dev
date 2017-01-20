@@ -52,4 +52,18 @@ class CategoryController
 
         return new JsonResponse($categoryStandard);
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function listAction(Request $request)
+    {
+        $categories = $this->repository->findBy([], [], null, 0);
+
+        $categoriesStandard = $this->normalizer->normalize($categories, 'external_api');
+
+        return new JsonResponse($categoriesStandard);
+    }
 }
